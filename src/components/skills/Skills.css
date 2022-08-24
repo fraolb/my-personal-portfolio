@@ -1,0 +1,81 @@
+.App{
+  background-color: aliceblue;
+}
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem;
+}
+.skill__item{
+    background: var(--color-bg-variant);
+    padding: 1.2rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+.skill__item:hover{
+    border-color: wheat;
+    background: transparent;
+}
+.skill__item-image{
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+.skill__item h3{
+    margin: 1.2rem 0 2 rem;
+    text-align: center;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo1 {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/*====media queries(medium devices)=====*/
+@media screen and (max-width: 1024px) {
+  .skills__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+/*====media queries(small devices)=====*/
+@media screen and (max-width: 600px) {
+  .skills__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
