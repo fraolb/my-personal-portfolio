@@ -1,6 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import emailjs from "emailjs-com"
 import './Contact.css'
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase-config";
 
 import { GoMail } from 'react-icons/go'
 import { FaTelegram } from 'react-icons/fa'
@@ -10,6 +13,21 @@ import Bg from "../../assets/bg6.jpg";
 import { Parallax } from "react-parallax";
 
 function Contact() {
+
+  const [header, setHeader] = useState([]);
+  const headerCollection = collection(db, "contact");
+
+  useEffect(() => {
+    const getFile = async () => {
+      const data = await getDocs(headerCollection);
+      setHeader(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getFile();
+  }, []);
+  const email = header.map(a=>a.email)
+  const tg = header.map(a=>a.tg)
+  const whatsup = header.map(a=>a.whatsup)
+
 
   const form = useRef();
 
@@ -33,19 +51,19 @@ function Contact() {
           <GoMail className='contact__option-icon'/>
           <h4>Email</h4>
           <h5>fraolbereket@gmail.com</h5>
-          <a href='mailto:fraolbereket@gmail.com' target='_blank'>Send Message</a>
+          <a href={email} target='_blank'>Send Message</a>
         </article>
         <article className='contact__option'>
           <FaTelegram className='contact__option-icon'/>
           <h4>Telegram</h4>
           <h5>Fraol  B.</h5>
-          <a href='https://t.me/chris_av' target='_blank'>Send Message</a>
+          <a href={tg} target='_blank'>Send Message</a>
         </article>
         <article className='contact__option'>
           <BsWhatsapp className='contact__option-icon'/>
           <h4>WhatsApp</h4>
           <h5>Fraol Bereket</h5>
-          <a href='https://api.whatsapp.com/send?phone+251919902998' target='_blank'>Send Message</a>
+          <a href={whatsup} target='_blank'>Send Message</a>
         </article>
       </div>
 
