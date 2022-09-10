@@ -50,7 +50,7 @@ function Contact() {
         <article className='contact__option'>
           <GoMail className='contact__option-icon'/>
           <h4>Email</h4>
-          <h5>fraolbereket@gmail.com</h5>
+          <h5>fraolbereket</h5>
           <a href={email} target='_blank'>Send Message</a>
         </article>
         <article className='contact__option'>
