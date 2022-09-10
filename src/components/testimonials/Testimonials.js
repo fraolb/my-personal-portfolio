@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import "./Testimonials.css";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase-config";
+
+import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import Twitter from "../../assets/Twitter.jpg";
 
 export default function Testimonials() {
+
+  const [comp, setComp] = useState([]);
+  const compColl = collection(db, "testimonials");
+
+  useEffect(() => {
+    const getFile = async () => {
+      const data = await getDocs(compColl);
+      setComp(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getFile();
+  }, []);
+
+  SwiperCore.use([Autoplay])
   return (
     <section id="testimonials">
       <h5>Review of clients</h5>
@@ -16,70 +32,35 @@ export default function Testimonials() {
 
       <div className="container testimonials__container">
         <Swiper
+          
+          autoplay={
+          {  delay: 2000,
+            disableOnInteraction: false}
+            }
           modules={[ Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={40}
           slidesPerView={1}
-        
+          speed={4000}
           pagination={{ clickable: true }}
           
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
         >
-          <SwiperSlide>
+          {comp.map((arr) => {
+              return (
+          <SwiperSlide key={arr.id}>
             <article className="testimonial">
               <div className="client__avatar">
-                <img src={Twitter} alt="" />
+                <img src={arr.img} alt="" />
               </div>
-              <h5 client__name>Abebe Beso</h5>
+              <h5 client__name>{arr.name}</h5>
               <small className="client__review">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                {arr.txt}<a href={arr.link}>Link</a>
               </small>
             </article>
           </SwiperSlide>
-          <SwiperSlide>
-            <article className="testimonial">
-              <div className="client__avatar">
-                <img src={Twitter} alt="" />
-              </div>
-              <h5 client__name>kebe Beso</h5>
-              <small className="client__review">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-              </small>
-            </article>
-          </SwiperSlide>
-          <SwiperSlide>
-            <article className="testimonial">
-              <div className="client__avatar">
-                <img src={Twitter} alt="" />
-              </div>
-              <h5 client__name>dgfhhjk Beso</h5>
-              <small className="client__review">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-              </small>
-            </article>
-          </SwiperSlide>
-          <SwiperSlide>
-            <article className="testimonial">
-              <div className="client__avatar">
-                <img src={Twitter} alt="" />
-              </div>
-              <h5 client__name>2 Beso</h5>
-              <small className="client__review">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-              </small>
-            </article>
-          </SwiperSlide>
-          <SwiperSlide>
-            <article className="testimonial">
-              <div className="client__avatar">
-                <img src={Twitter} alt="" />
-              </div>
-              <h5 client__name>1 Beso</h5>
-              <small className="client__review">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-              </small>
-            </article>
-          </SwiperSlide>
+        );
+      })}
         </Swiper>
       </div>
     </section>
