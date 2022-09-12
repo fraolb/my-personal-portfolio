@@ -1,6 +1,6 @@
 .services__container{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
     gap: 3rem;
 }
 .service{
@@ -29,7 +29,7 @@
     text-align: center;
 }
 .service__list{
-    padding: 2rem;
+    padding: 1rem;
 }
 .service__list li{
     display: flex;
@@ -44,11 +44,15 @@
 .service__list p{
     font-size: 0.9rem;
 }
+.certificates{
+    text-align: center;
+    color: var(--color-primary);
+}
 
 /*====media queries(medium devices)=====*/
 @media screen and (max-width: 1024px) {
     .services__container{
-        grid-template-columns: 1fr 1fr;
+        /* grid-template-columns: 1fr 1fr; */
         gap: 2rem;
     }
     .service{
@@ -58,7 +62,7 @@
 /*====media queries(small devices)=====*/
 @media screen and (max-width: 600px) {
     .services__container{
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */
         gap: 1,5rem;
     }
 }
