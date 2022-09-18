@@ -10,23 +10,42 @@ import Contact from "./components/contact/Contact"
 import Footer from "./components/footer/Footer"
 import Services from './components/services/Services';
 
+import ParticlesBackground from "./components/background/ParticleBackground"
+import Particles from "react-tsparticles"
+import { loadFull } from "tsparticles";
+import { useCallback } from "react";
+
 
 function App() {
+  
   return (
     <div className="App">
+      
       <Header />
       <Nav />
       <Skills />
       <About />
-      <Skills />
       <Experience />
       <Portfolio />
       <Services />
       <Testimonials />
       <Contact />
       <Footer />
+   
     </div>
   );
 }
 
 export default App;
+
+
+{/* <Header />
+      <Nav />
+      <Skills />
+      <About />
+      <Experience />
+      <Portfolio />
+      <Services />
+      <Testimonials />
+      <Contact />
+      <Footer /> */}
