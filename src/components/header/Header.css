@@ -1,12 +1,21 @@
 header{
-   height: 100vh;
-   padding-top: 7rem;
+   height: 110vh;
+   padding-top: 3rem;
    overflow: hidden; 
+   background-color: var(--color-bg);
+   background-image: url(../../assets/bg7.jpg);
+   background-position: 50%;
 }
 .header__container{
     text-align: center;
     height: 100%;
     position: relative;
+}
+
+.particles{
+    position: fixed;
+    width: 100%;
+    z-index: -1;
 }
 
 /*============CTA=========*/
@@ -25,6 +34,7 @@ header{
     position: absolute;
     left: 0;
     bottom: 3rem;
+    margin-bottom: 5rem;
 }
 .header__socials::after{
     content: '';
@@ -34,19 +44,20 @@ header{
 }
 /*==========IMG==========*/
 .me{
-    background: linear-gradient(var(--color-primary), transparent);
-    width: 22rem;
-    height: 30rem;
+    /* background: linear-gradient(var(--color-primary), transparent); */
+    width: 30rem;
+    height: 70rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 4rem;
+    margin-top: 1rem;
     border-radius: 0 10rem 0 10rem;
     padding: 1rem 1.5rem 1.5rem 1.5rem;
 }
 /*==========Scroll Down==========*/
 .scroll__down{
     position: absolute;
+    margin-bottom: 5rem;
     right: -2.3rem;
     bottom: 5rem;
     transform: rotate(90deg);
