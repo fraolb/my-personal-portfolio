@@ -1,5 +1,5 @@
 .App{
-  background-color: aliceblue;
+
 }
 .skills__container {
   display: grid;
@@ -16,6 +16,7 @@
 .skill__item:hover{
     border-color: wheat;
     background: transparent;
+    color: var(--color-primary);
 }
 .skill__item-image{
     border-radius: 1.5rem;
@@ -29,6 +30,17 @@
 .App-logo {
   height: 20vmin;
   pointer-events: none;
+}
+
+h5 {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--color-lights);
+}
+h2{
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -76,6 +88,9 @@
   .skills__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1.5rem;
+  }
+  .skill__item{
+    padding: 0;
   }
 }
